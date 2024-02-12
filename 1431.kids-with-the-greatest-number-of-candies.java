@@ -13,7 +13,7 @@ class Solution {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
         int max = 0;
         for (int i : candies) {
-            max = Math.max(i, max);
+            max = i > max ? i : max;
         }
         List<Boolean> result = new ArrayList<>(candies.length);
         for (int i : candies) {
