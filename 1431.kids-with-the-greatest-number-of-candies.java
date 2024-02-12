@@ -7,13 +7,19 @@
 // @lc code=start
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 class Solution {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-        int max = Arrays.stream(candies).max().orElse(0);
-        return Arrays.stream(candies).mapToObj(i -> i + extraCandies >= max ).toList();
+        int max = 0;
+        for (int i : candies) {
+            max = Math.max(i, max);
+        }
+        List<Boolean> result = new ArrayList<>(candies.length);
+        for (int i : candies) {
+            result.add(i + extraCandies >= max);
+        }
+        return result;
     }
 }
 // @lc code=end
