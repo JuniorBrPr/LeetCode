@@ -2,23 +2,21 @@ import java.util.HashSet;
 import java.util.List;
 class Solution {
     public String reverseVowels(String s) {
-        HashSet<Character> characters = new HashSet<>(10){};
-        characters.addAll(List.of('a','e','i','o','u','A','E','I','O','U'));
+        String characters = "aeiouAEIOU";
         char[] string = s.toCharArray();
-
         int begin = 0;
         int end = s.length() - 1;
         while(begin < end) {
-            while(begin < end && !characters.contains(string[begin])){
+            while(begin < end && characters.indexOf(string[begin]) < 0){
                 begin++;
             }
 
-            while (end > begin && !characters.contains(string[end])){
+            while (end > begin && characters.indexOf(string[end]) < 0){
                 end--;
             }
 
-            char temp = s.charAt(begin);
-            string[begin] = s.charAt(end);
+            char temp = string[begin];
+            string[begin] = string[end];
             string[end] = temp;
             begin++;
             end--;
