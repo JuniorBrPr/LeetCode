@@ -8,16 +8,12 @@ class Solution {
 
         int begin = 0;
         int end = s.length() - 1;
-        for (int i = 0; i < s.length() - 1; i++) {
-            if (end <= begin) return new String(string);
-
-            while(begin <= s.length() - 1 && !characters.contains(s.charAt(begin))){
-                if (begin >= end) return new String(string);
+        while(begin < end) {
+            while(begin < end && !characters.contains(string[begin])){
                 begin++;
             }
 
-            while (end > 0 && !characters.contains(s.charAt(end))){
-                if (end <= begin) return new String(string);
+            while (end > begin && !characters.contains(string[end])){
                 end--;
             }
 
