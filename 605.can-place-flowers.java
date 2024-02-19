@@ -12,18 +12,16 @@ class Solution {
         }
 
         int flowers = 0;
-        int maxIndex = flowerbed.length - 2;
-
         for (int i = 0; i < flowerbed.length; ) {
             if (flowerbed[i] == 0 && (i == flowerbed.length - 1 || flowerbed[i + 1] == 0) && (i == 0 || flowerbed[i - 1] == 0)) {
                 flowers++;
-                if (i == maxIndex) {
+                if (i >= flowerbed.length - 2 || flowers >= n) {
                     break;
                 }
                 i += 2;
                 continue;
             } else {
-                if (i < maxIndex && flowerbed[i + 1] == 1) {
+                if (i < flowerbed.length - 2 && flowerbed[i + 1] == 1) {
                     i += 2;
                     continue;
                 }
