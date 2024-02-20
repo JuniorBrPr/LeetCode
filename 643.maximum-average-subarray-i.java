@@ -7,7 +7,8 @@ class Solution {
         double maxSum = sum;
         for (int j = k; j < nums.length; j++) {
             sum+= nums[j] - nums[j-k];
-            maxSum = maxSum < sum ? sum : maxSum;
+            if(sum < maxSum) continue;
+            maxSum = sum;
         }
         return maxSum/k;
     }
