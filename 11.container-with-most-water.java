@@ -6,10 +6,11 @@ class Solution {
         while (right > left){
             final int rh = height[right];
             final int lh = height[left];
-            final int currArea = (right - left) * (rh < lh ? rh : lh);
+            final boolean lhIsGreaterOrEqual = rh <= lh;
+            final int currArea = (right - left) * (lhIsGreaterOrEqual ? rh : lh);
             area = area < currArea ? currArea : area;
-            if (rh <= lh)right--;
-            if (lh <= rh)left++;
+            if (lhIsGreaterOrEqual)right--;
+            if (!lhIsGreaterOrEqual)left++;
         }
         return area;
     }
