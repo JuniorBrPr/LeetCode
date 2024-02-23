@@ -4,13 +4,16 @@ class Solution {
         int left = 0;
         int right = height.length-1;
         while (right > left){
-            final int rh = height[right];
-            final int lh = height[left];
-            final boolean lhIsGreaterOrEqual = rh <= lh;
-            final int currArea = (right - left) * (lhIsGreaterOrEqual ? rh : lh);
+            final int currArea = (right - left) * (height[right] > height[left] ? height[left] : height[right]);
             area = area < currArea ? currArea : area;
-            if (lhIsGreaterOrEqual)right--;
-            if (!lhIsGreaterOrEqual)left++;
+            if (height[right] > height[left]){
+                left++;
+            } else if (height[right] < height[left]) {
+                right--;
+            } else {
+                left++;
+                right--;
+            }
         }
         return area;
     }
