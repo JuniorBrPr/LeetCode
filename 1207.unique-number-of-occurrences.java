@@ -4,7 +4,6 @@ import java.util.HashSet;
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
         HashMap<Integer, Integer> numsSeen = new HashMap<>();
-        boolean unique = false;
         for (int i = 0; i < arr.length; i++) {
             numsSeen.put(arr[i], numsSeen.getOrDefault(arr[i], 0) + 1);
         }
