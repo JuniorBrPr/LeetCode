@@ -2,20 +2,15 @@ import java.util.Stack;
 
 class Solution {
     public String removeStars(String s) {
-        char[] sArray = s.toCharArray();
-        Stack<Character> characterStack = new Stack<>();
-        for (char c : sArray) {
-            if (c == '*') {
-                characterStack.pop();
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (c=='*') {
+                if (!sb.isEmpty()) sb.deleteCharAt(sb.length()-1);
             } else {
-                characterStack.push(c);
+                sb.append(c);
             }
         }
-        char[] rArray = new char[characterStack.size()];
-        for (int i = characterStack.size() - 1; i >= 0 ; i--) {
-            rArray[i] = characterStack.pop();
-        }
-        return String.valueOf(rArray);
+        return sb.toString();
     }
 }
 
